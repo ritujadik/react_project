@@ -10,16 +10,20 @@ const FormELem = () => {
     contactNo: "",
     salary: "",
     gender: "",
+    isAccept: false,
   });
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
 
-    setForm((previousform) => ({ ...form, [name]: value }));
+    setForm((previousform) => ({
+      ...form,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
   console.log("form: ", form);
   return (
     <div>
-      <div className="form-element">
+      <div className="form-element" style={{ marginBottom: "16px" }}>
         <p htmlFor="name">Name:{form.name}</p>
         <input
           type="text"
@@ -28,14 +32,13 @@ const FormELem = () => {
           onChange={handleInputChange}
         />
       </div>
-      <div className="form-element">
-        <p htmlFor="dept">Department:{form.dept}</p>
-        <input
-          type="text"
-          name="dept"
-          placeholder="Please Enter your department"
-          onChange={handleInputChange}
-        />
+      <div className="form-element" style={{ marginBottom: "16px" }}>
+        <label htmlFor="dept">Department:{form.dept} </label>
+        <select name="dept" id="dept">
+          <option value="HR">HR</option>
+          <option value="Software Development">Software Development</option>
+          <option value="QA">QA</option>
+        </select>
       </div>
       <div className="form-element">
         <p htmlFor="design">Designation:{form.design}</p>
@@ -66,16 +69,52 @@ const FormELem = () => {
       </div>
       <div className="form-element">
         <p htmlFor="salary">Salary:{form.salary}</p>
-        <input type="range" name="name" onChange={handleInputChange} />
+        <input
+          type="range"
+          name="salary"
+          min="1000"
+          max="50000"
+          onChange={handleInputChange}
+        />
       </div>
       <div className="form-element">
-        <p htmlFor="gender">Male:{form.gender}</p>
-        <input type="radio" name="Male" onChange={handleInputChange} />
-        <p htmlFor="gender">FeMale:{form.gender}</p>
-        <input type="radio" name="FeMale" onChange={handleInputChange} />
+        <p>
+          Select Gender:{""}
+          <span style={{ textTrasnform: "capitalize" }}>{form.gender}</span>
+        </p>
+        <ul>
+          <li>
+            <input
+              type="radio"
+              name="gender"
+              value="Male"
+              onChange={handleInputChange}
+            />{" "}
+            Male
+          </li>
+          <li>
+            <input
+              type="radio"
+              name="gender"
+              value="Female"
+              onChange={handleInputChange}
+            />{" "}
+            Female
+          </li>
+        </ul>
+        <div className="form-element">
+          <input type="checkbox" name="isAccept" onChange={handleInputChange} />
+          <span>I Accept the user agreement</span>
+        </div>
+        <div>
+          <span>
+            <button disabled={!form.isAccept}>Submit</button>
+          </span>
+          <span>
+            <button disabled={!form.isAccept}>Cancel</button>
+          </span>
+        </div>
       </div>
-      <input type="checkbox" />
-      <p>This is the default checkbox to tick</p>
     </div>
   );
 };
