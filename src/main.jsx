@@ -7,6 +7,9 @@ import Newform from "./Newform.jsx";
 import Toggle from "./Toggle.jsx";
 import Rituja from "./FormInput.jsx";
 import EULA from "./Checkbox.jsx";
+import Todolist from "./Todolist.jsx";
+import Closure2 from "./closure2.jsx";
+import Closure from "./closureexample.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -14,9 +17,12 @@ createRoot(document.getElementById("root")).render(
     {/*<Greeting />*/}
     {/*<AboutElem />*/}
     {/*<Form />*/}
-    {/*<Newform />*/}
+    {/*<Newform />/*}
     {/*<Toggle />*/}
     {/*<EULA />*/}
-    <Rituja />
+    {/*<Rituja />*/}
+    {<Todolist />}
+    {/*<Closure />*/}
+    {/*<Closure2 />*/}
   </StrictMode>
 );

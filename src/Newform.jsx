@@ -33,6 +33,8 @@ const Counter = () => {
         >
           Decrement By Inline Method
         </button>
+        <button onClick={onIncrement}>Increment</button>
+        <button onClick={onDecrement}>Decrement</button>
       </div>
     </div>
   );
